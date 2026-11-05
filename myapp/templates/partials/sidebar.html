@@ -1,0 +1,44 @@
+<aside class="sidebar" aria-label="Main navigation">
+  <a
+    class="brand"
+    href="{% url 'home' %}"
+    aria-label="Africa Liberation University home"
+  >
+    <span class="brand-mark" aria-hidden="true"
+      ><span></span><span></span><span></span
+    ></span>
+    <span class="brand-copy"
+      ><strong>Africa Liberation</strong><small>UNIVERSITY</small></span
+    >
+  </a>
+
+  <div class="nav-label">ACADEMIC SERVICES</div>
+  <nav class="primary-nav">
+    <a class="nav-link" href="{% url 'home' %}"
+      ><span class="nav-icon icon-grid" aria-hidden="true"></span>Overview</a
+    >
+    <a class="nav-link" href="{% url 'assessment' %}"
+      ><span class="nav-icon icon-check" aria-hidden="true"></span>Student
+      assessment</a
+    >
+    <a class="nav-link" href="{% url 'requirements' %}"
+      ><span class="nav-icon icon-list" aria-hidden="true"></span>Degree
+      requirements</a
+    >
+  </nav>
+
+  <div class="sidebar-bottom">
+    <div class="term-card">
+      <span class="term-eyebrow">CURRENT ACADEMIC YEAR</span>
+      <strong>2025 / 2026</strong>
+      <span class="term-status"><span></span> Assessment period open</span>
+    </div>
+    <div class="profile-row">
+      <div class="profile-avatar" aria-hidden="true">AR</div>
+      <div class="profile-copy">
+        <strong>Academic Registrar</strong><span>Registry office</span>
+      </div>
+      <span class="profile-menu" aria-hidden="true">···</span>
+    </div>
+  </div>
+</aside>

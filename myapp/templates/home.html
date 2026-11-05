@@ -1,12 +1,309 @@
-<!DOCTYPE html>
+{% load static %}
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Welcome to the Home Page</h1>
-    <p>This is a simple home page for myapp</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f6f3" />
+    <title>Academic Progress | Africa Liberation University</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <script src="{% static 'js/navigation.js' %}" defer></script>
+    <script src="{% static 'js/app.js' %}" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      {% include "partials/sidebar.html" %}
+
+      <main class="main-content" id="overview">
+        <header class="topbar">
+          <div class="breadcrumb">
+            <span>Academic services</span
+            ><span class="breadcrumb-divider">/</span><strong>Overview</strong>
+          </div>
+          <div class="topbar-right">
+            <span class="academic-year">2025 / 2026</span
+            ><span class="topbar-divider"></span
+            ><span class="secure-label"
+              ><span class="secure-dot"></span>Registry workspace</span
+            >
+          </div>
+        </header>
+
+        <div class="page-content">
+          <section class="page-heading">
+            <div>
+              <div class="eyebrow">
+                <span class="eyebrow-line"></span>STUDENT RECORDS
+              </div>
+              <h1>Progress &amp; completion</h1>
+              <p>
+                Review academic standing and determine a student's next step.
+              </p>
+            </div>
+            <button
+              class="button button-secondary print-button"
+              id="print-report"
+              type="button"
+            >
+              <span class="button-icon icon-print" aria-hidden="true"></span
+              >Print report
+            </button>
+          </section>
+
+          <section
+            class="lookup-panel"
+            id="assessment"
+            aria-labelledby="lookup-title"
+          >
+            <div class="lookup-copy">
+              <div class="lookup-icon" aria-hidden="true">
+                <span class="icon-search"></span>
+              </div>
+              <div>
+                <h2 id="lookup-title">Assess a student</h2>
+                <p>Enter a student ID to review their academic record.</p>
+              </div>
+            </div>
+            <form class="lookup-form" id="assessment-form">
+              <label class="sr-only" for="student-id">Student ID</label>
+              <div class="input-wrap">
+                <span class="input-icon" aria-hidden="true">ID</span
+                ><input
+                  id="student-id"
+                  name="student-id"
+                  type="search"
+                  value="2021/CS/014"
+                  placeholder="e.g. 2021/CS/014"
+                  autocomplete="off"
+                  required
+                /><button
+                  class="clear-input"
+                  type="button"
+                  aria-label="Clear student ID"
+                >
+                  ×
+                </button>
+              </div>
+              <button class="button button-primary" type="submit">
+                <span class="button-icon icon-scan" aria-hidden="true"></span
+                ><span class="submit-label">Run assessment</span>
+              </button>
+            </form>
+            <p class="demo-hint">
+              Demo records:
+              <button
+                type="button"
+                class="demo-record"
+                data-student-id="2021/CS/014"
+              >
+                2021/CS/014</button
+              ><span>·</span
+              ><button
+                type="button"
+                class="demo-record"
+                data-student-id="2021/IT/008"
+              >
+                2021/IT/008</button
+              ><span>·</span
+              ><button
+                type="button"
+                class="demo-record"
+                data-student-id="2021/BA/027"
+              >
+                2021/BA/027
+              </button>
+            </p>
+          </section>
+
+          <div class="result-toolbar">
+            <div>
+              <h2>Assessment result</h2>
+              <span class="result-caption"
+                >Academic standing and degree completion</span
+              >
+            </div>
+            <div class="result-meta">
+              <span class="demo-tag"><span></span>Sample data</span
+              ><span class="last-reviewed"
+                >Last reviewed <strong>05 Nov 2026</strong></span
+              >
+            </div>
+          </div>
+
+          <section
+            class="results-grid"
+            aria-live="polite"
+            aria-busy="false"
+            id="assessment-results"
+          >
+            <article class="student-card panel">
+              <div class="student-card-top">
+                <span class="section-label">STUDENT PROFILE</span
+                ><span class="year-pill" id="student-year">FINAL YEAR</span>
+              </div>
+              <div class="student-identity">
+                <div
+                  class="student-avatar"
+                  id="student-avatar"
+                  aria-hidden="true"
+                >
+                  MO
+                </div>
+                <div>
+                  <h3 id="student-name">Maya Okafor</h3>
+                  <span class="student-id" id="student-number"
+                    >2021/CS/014</span
+                  >
+                </div>
+              </div>
+              <div class="student-details">
+                <div>
+                  <span>Programme</span
+                  ><strong id="student-programme">BSc Computer Science</strong>
+                </div>
+                <div>
+                  <span>Faculty</span
+                  ><strong id="student-faculty"
+                    >Computing &amp; Engineering</strong
+                  >
+                </div>
+                <div>
+                  <span>Entry year</span
+                  ><strong id="student-entry">2021 / 2022</strong>
+                </div>
+              </div>
+              <div class="student-footer">
+                <span class="student-status-dot"></span
+                ><span id="student-enrolment">Active student</span
+                ><span class="footer-dot">·</span><span>Full-time</span>
+              </div>
+            </article>
+
+            <article
+              class="decision-card panel"
+              id="decision-card"
+              data-status="progress"
+            >
+              <div class="decision-topline">
+                <span class="section-label">ACADEMIC DECISION</span
+                ><span class="decision-state"
+                  ><span class="state-dot"></span
+                  ><span id="decision-state-label"
+                    >ASSESSMENT COMPLETE</span
+                  ></span
+                >
+              </div>
+              <div class="decision-main">
+                <div
+                  class="decision-symbol"
+                  id="decision-symbol"
+                  aria-hidden="true"
+                >
+                  →
+                </div>
+                <div>
+                  <div class="decision-kicker" id="decision-kicker">
+                    NEXT STEP
+                  </div>
+                  <h3 id="decision-title">Eligible to proceed</h3>
+                  <p id="decision-description">
+                    Maya has met the requirements to continue to the next
+                    semester.
+                  </p>
+                </div>
+              </div>
+              <div class="decision-bottom">
+                <span class="decision-detail" id="decision-detail"
+                  >Proceed to Semester 2</span
+                ><span class="decision-period">2025 / 2026</span>
+              </div>
+            </article>
+
+            <article class="credits-card panel">
+              <div class="card-heading">
+                <div>
+                  <span class="section-label">DEGREE PROGRESS</span>
+                  <h3>Credit completion</h3>
+                </div>
+                <span class="credits-icon" aria-hidden="true">↗</span>
+              </div>
+              <div class="credits-figure">
+                <strong id="credits-earned">142</strong
+                ><span>/ <span id="credits-required">144</span> credits</span>
+              </div>
+              <div
+                class="progress-track"
+                role="progressbar"
+                aria-label="Degree credits completed"
+                aria-valuemin="0"
+                aria-valuemax="144"
+                aria-valuenow="142"
+                id="credit-progress"
+              >
+                <span id="credit-progress-fill"></span>
+              </div>
+              <div class="progress-caption">
+                <span id="credits-caption">2 credits remaining</span
+                ><span id="credits-percent">99%</span>
+              </div>
+              <div class="gpa-row">
+                <span>Cumulative GPA</span
+                ><strong id="student-gpa">3.68 <small>/ 4.00</small></strong>
+              </div>
+            </article>
+
+            <article class="requirements-card panel" id="requirements">
+              <div class="card-heading">
+                <div>
+                  <span class="section-label">ELIGIBILITY REVIEW</span>
+                  <h3>Requirements checklist</h3>
+                </div>
+                <span class="check-count" id="check-count">3 / 4 met</span>
+              </div>
+              <div class="requirement-list" id="requirement-list">
+                <div class="requirement-row is-complete">
+                  <span class="requirement-mark" aria-hidden="true">✓</span
+                  ><span>Minimum GPA of 2.00</span><strong>Met</strong>
+                </div>
+                <div class="requirement-row is-complete">
+                  <span class="requirement-mark" aria-hidden="true">✓</span
+                  ><span>Core modules passed</span><strong>Met</strong>
+                </div>
+                <div class="requirement-row is-complete">
+                  <span class="requirement-mark" aria-hidden="true">✓</span
+                  ><span>Capstone project</span><strong>Met</strong>
+                </div>
+                <div class="requirement-row is-pending">
+                  <span class="requirement-mark" aria-hidden="true">!</span
+                  ><span>Minimum credit requirement</span
+                  ><strong>In progress</strong>
+                </div>
+              </div>
+              <p class="requirements-note" id="requirements-note">
+                Complete outstanding credits to qualify for graduation.
+              </p>
+            </article>
+          </section>
+
+          <footer class="page-footer">
+            <span
+              >Africa Liberation University
+              <span class="footer-dot">·</span> Office of the Academic
+              Registrar</span
+            ><span
+              >For demonstration purposes only. Verify against official student
+              records.</span
+            >
+          </footer>
+          <div class="toast" id="toast" role="status" aria-live="polite"></div>
+        </div>
+      </main>
+    </div>
+  </body>
 </html>
